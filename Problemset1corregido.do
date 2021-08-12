@@ -156,11 +156,11 @@ graph twoway scatter income_pc village_pop, by(cgvo_occur)
 
 * 
 
-graph twoway scatter poor_reg_rate subsidy_rate gov_officials , by(cgvo_occur)
+graph twoway scatter poor_reg_rate subsidy_rate gov_officials , by(cgvo_occur) scheme(mrc)
 
-* histograma 
+* Histograma 
 
-hist high_gov_quality , title(Subsidios) by(cgvo_occur)
+hist subsidy_rate, by(cgvo_occur)  norm  scheme(mrc)
 
 * Boxplot
 
