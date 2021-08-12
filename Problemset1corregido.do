@@ -93,11 +93,6 @@ graph twoway scatter  subsidy_rate income_pc, by(cgvo_occur) scheme(mrc)
 pwcorr subsidy_rate village_pop poor_housing_rate ag_rate business_income_pc fiscal_rev_pc fiscal_exp_pc col_revenue_pc gov_officials high_gov_quality mid_gov_quality low_gov_quality terrain econ_zone suburb town_center poor_village trained_labor_rate safe_water_rate computer_rate clinic_rate med_ins_rate, sig 
 
 
-* Consideramos interesante realizar un gráfico con aquellas correlaciones que resultados estadísticamente significativas al 1%: 
-
-graph matrix subsidy_rate village_pop gov_officials low_gov_quality terrain poor_village clinic_rate, half scheme(mrc)
-
-
 
 ***** 5 *****
 
@@ -150,21 +145,26 @@ restore
 
 ***** 7 ***** 
 
+* Consideramos interesante realizar un gráfico con aquellas correlaciones que resultados estadísticamente significativas al 1% y que no son dummies: 
+
+graph matrix subsidy_rate village_pop gov_officials low_gov_quality clinic_rate, half scheme(mrc)
+
+* gráfico entre el ingreso y la variable village_pop por grupos tratados y no tratados
 
 graph twoway scatter income_pc village_pop, by(cgvo_occur)
 
-* también podria ser algún histograma (también están en las primeras lineas de código)
 
-* gráficamente 
+* 
 
-graph twoway scatter gov_officials income_pc, by(cgvo_occur)
+graph twoway scatter poor_reg_rate subsidy_rate gov_officials , by(cgvo_occur)
 
-* o un histograma 
+* histograma 
 
 hist high_gov_quality , title(Subsidios) by(cgvo_occur)
 
+* Boxplot
 
-
+graph box subsidy_rate, by(cgvo_occur)
 
 
 
