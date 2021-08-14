@@ -68,11 +68,11 @@ bysort income_gr: tabulate sub_gr
 
 * Para realizar un análisis más visual consideramos relevante realizar un gráfico de dispersión entre la tasa de subsidio que reciebn las village y el ingreso:
 
-graph twoway scatter subsidy_rate income_pc, scheme(mrc)
+graph twoway scatter subsidy_rate income_pc, scheme(mrc) title(Subsidio e ingreso) ytitle(Tasa de Subsidio) xtitle(Ingreso) mcolor (dkorange)
  
 * También es informativo realizar un gráfico de barras de la tasa de subsidio media para cada uno de los valores que toma la variable "income_gr":
 
-graph bar subsidy_rate, over(income_gr) scheme(mrc)
+graph bar subsidy_rate, over(income_gr) scheme(mrc) title(Tasa de subsidio por grupo de ingresos) ytitle(Tasa de Subsidio (promedio)) bar (1, color(bluegrey))
 
 
 ***** 4 *****
@@ -85,7 +85,7 @@ pwcorr income_pc subsidy_rate, obs sig
 
 * A continuación realizamos un gráfico que compara la relación entre ingreso y subsidio para las aldeas tratadas y no tratadas: 
 
-graph twoway scatter  subsidy_rate income_pc, by(cgvo_occur) scheme(mrc)
+graph twoway scatter  subsidy_rate income_pc, by(cgvo_occur) scheme(mrc) ytitle(Tasa de subsidio) xtitle(Ingreso) mcolor(purple)
 
 
 * A continuación calculamos la correlación entre la tasa de subsidio y las variables relacionadas a las características de cada village: 
@@ -102,7 +102,7 @@ pwcorr subsidy_rate village_pop poor_housing_rate ag_rate business_income_pc fis
 
 *grafico de medias 
 
-graph bar subsidy_rate, by(cgvo_occur)
+graph bar subsidy_rate, by(cgvo_occur) scheme(mrc) ytitle(Tasa de subsidio (promedio)) bar (1, color(emerald))
 
 * realizamos un ttest para la comparación de medias según si fueron tratados o no 
 
@@ -112,9 +112,6 @@ ttest subsidy_rate, by(cgvo_occur)
 
 ttest poor_housing_rate, by(cgvo_occur)
 
-* preguntar: si es esta (porque dice reg)
-
-* esta bien 
 ttest poor_reg_rate, by(cgvo_occur)
 
 ttest disability_rate, by(cgvo_occur)
