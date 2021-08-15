@@ -150,20 +150,10 @@ histogram income_pc
 
 graph matrix subsidy_rate village_pop gov_officials low_gov_quality clinic_rate, half scheme(mrc) mcolor(bluegrey)
 
-* gráfico entre el ingreso y la variable village_pop por grupos tratados y no tratados
 
-graph twoway scatter income_pc village_pop, by(cgvo_occur)
-
-
-graph twoway scatter poor_reg_rate subsidy_rate gov_officials , by(cgvo_occur) scheme(mrc)
-
-* Histograma 
+* Histograma tasa de subsidio por aldeas tratadas y no tratadas
 
 hist subsidy_rate, by(cgvo_occur)  norm  scheme(mrc)
-
-* Boxplot
-
-graph box subsidy_rate, by(cgvo_occur)
 
 
 
