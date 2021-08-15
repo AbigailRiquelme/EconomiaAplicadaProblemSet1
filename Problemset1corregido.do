@@ -121,6 +121,10 @@ ttest subsidy_pop, by(cgvo_occur)
 
 ***** 6 ***** 
 
+assert cgvo_occur==0 cgvo_occur==1 cgvo_occur==
+
+assert income_pc>=0|income_pc ==.
+
 * Podriamos usar preserve y ver si al quedarnos, por ejemplo, con el ingreso positivo se eliminan observaciones y luego usar restore para no realizar cambios permanentes en la base de datos 
 
 preserve
@@ -131,7 +135,7 @@ restore
 
 * hacer graficos y ver outliers
 
-* graficos, histogramas, tabla 
+histogram income_pc
 
 *Variables sospechosas: 
 
@@ -144,14 +148,12 @@ restore
 
 * Consideramos interesante realizar un gráfico con aquellas correlaciones que resultados estadísticamente significativas al 1% y que no son dummies: 
 
-graph matrix subsidy_rate village_pop gov_officials low_gov_quality clinic_rate, half scheme(mrc)
+graph matrix subsidy_rate village_pop gov_officials low_gov_quality clinic_rate, half scheme(mrc) mcolor(bluegrey)
 
 * gráfico entre el ingreso y la variable village_pop por grupos tratados y no tratados
 
 graph twoway scatter income_pc village_pop, by(cgvo_occur)
 
-
-* 
 
 graph twoway scatter poor_reg_rate subsidy_rate gov_officials , by(cgvo_occur) scheme(mrc)
 
