@@ -143,22 +143,23 @@ ttest subsidy_pop, by(cgvo_occur)
 
 ***** 6 ***** 
 
-* Podriamos usar preserve y ver si al quedarnos, por ejemplo, con el ingreso 
-* positivo se eliminan observaciones y luego usar restore para no realizar 
-* cambios permanentes en la base de datos 
+* con assert verificamos si las variables dummies toman los valores correctos:
 
 assert cgvo_occur==0 cgvo_occur==1 cgvo_occur==
 
 assert income_pc>=0|income_pc ==.
 
-* Podriamos usar preserve y ver si al quedarnos, por ejemplo, con el ingreso positivo se eliminan observaciones y luego usar restore para no realizar cambios permanentes en la base de datos 
+* Podriamos usar preserve y ver si al quedarnos, por ejemplo, con el ingreso 
+* positivo se eliminan observaciones y luego usar restore para no realizar 
+* cambios permanentes en la base de datos 
 
 preserve
 drop if  subsidy_pop<0
 restore
 
 
-* se puede extener a las demás variables económicas o sobre las características de cada village
+* se puede extener a las demás variables económicas o sobre las características 
+* de cada village
 
 * hacer graficos y ver outliers
 
@@ -181,7 +182,7 @@ graph matrix subsidy_rate village_pop gov_officials low_gov_quality clinic_rate,
 
 * Histograma tasa de subsidio por aldeas tratadas y no tratadas
 
-hist subsidy_rate, by(cgvo_occur)  norm  scheme(mrc)
+hist subsidy_rate, by(cgvo_occur)  norm scheme(mrc)
 
 
 
