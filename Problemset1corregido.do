@@ -147,29 +147,41 @@ ttest subsidy_pop, by(cgvo_occur)
 * positivo se eliminan observaciones y luego usar restore para no realizar 
 * cambios permanentes en la base de datos 
 
+assert cgvo_occur==0 cgvo_occur==1 cgvo_occur==
+
+assert income_pc>=0|income_pc ==.
+
+* Podriamos usar preserve y ver si al quedarnos, por ejemplo, con el ingreso positivo se eliminan observaciones y luego usar restore para no realizar cambios permanentes en la base de datos 
+
 preserve
 drop if  subsidy_pop<0
 restore
+
+
+* se puede extener a las demás variables económicas o sobre las características de cada village
+
+* hacer graficos y ver outliers
+
+histogram income_pc
+
+*Variables sospechosas: 
+
+* Años
+
+* early_leave
 
 
 ***** 7 ***** 
 
 * Consideramos interesante realizar un gráfico con aquellas correlaciones que resultados estadísticamente significativas al 1% y que no son dummies: 
 
-graph matrix subsidy_rate village_pop gov_officials low_gov_quality clinic_rate, half scheme(mrc)
+
+graph matrix subsidy_rate village_pop gov_officials low_gov_quality clinic_rate, half scheme(mrc) mcolor(bluegrey)
 
 
-* Gráfico de la tasa de pobreza, tasa de subsidio y funcionarios del gobierno 
-* según aldeas tratadas y no tratadas 
-
-graph twoway scatter poor_reg_rate subsidy_rate gov_officials , by(cgvo_occur) scheme(mrc)
-
-* Histograma de la tasa de subsidio para aldeas tratadas y no tratadas 
+* Histograma tasa de subsidio por aldeas tratadas y no tratadas
 
 hist subsidy_rate, by(cgvo_occur)  norm  scheme(mrc)
-
-
-
 
 
 
