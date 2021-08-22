@@ -70,7 +70,7 @@ mat A=A'
 
 mat list A
 
-frmttable using Table1, varlabels tex statmat(A) sdec(0,0,0) ctitles("Variable","Observations", "Mean", "Standard" "" "" \ "" "" "" " deviation") title(Table 2: Summary Statistics of NFS Villages) note(These statistics are based on our analysis of 255 villages from the National Fixed-Point Survey (NFS) from 2000-2011 in 19 provinces)  titlfont(fontcolumn) replace 
+frmttable using Table2, varlabels tex statmat(A) sdec(0,0,0) ctitles("Variable","Observations", "Mean", "Standard" "" "" \ "" "" "" " deviation") title(Table 2: Summary Statistics of NFS Villages) note(These statistics are based on our analysis of 255 villages from the National Fixed-Point Survey (NFS) from 2000-2011 in 19 provinces)   replace 
 
 
 ****** 2 ******
