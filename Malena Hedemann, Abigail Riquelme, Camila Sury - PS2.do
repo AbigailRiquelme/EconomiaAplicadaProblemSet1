@@ -76,7 +76,7 @@ frmttable using Table2, varlabels tex statmat(A) sdec(0,0,0) ctitles("Variable",
 
 estpost tabstat village_pop income_pc subsidy_rate poor_housing_rate poor_reg_rate disability_rate gov_officials high_gov_quality mid_gov_quality low_gov_quality ag_rate business_income_pc fiscal_rev_pc fiscal_exp_pc col_revenue_pc trained_labor_rate safe_water_rate computer_rate med_ins_rate enroll_rate, statistics(n mean sd) columns(statistics)
 
-esttab . using prueba.tex, replace cells("count mean sd ") nonumber collabels("Observations" "Mean" "Standard \\ deviation") title("summary stats") noobs label
+esttab . using prueba.tex, replace cells("count mean sd ") nonumber collabels("Observations" "Mean" "Standard \\ deviation") title("titulo") noobs label
 
 * prueba para ver si se puede poner standar (espacio) deviation
 
