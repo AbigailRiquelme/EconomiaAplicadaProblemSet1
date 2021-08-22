@@ -72,11 +72,31 @@ mat list A
 
 frmttable using Table2, varlabels tex statmat(A) sdec(0,0,0) ctitles("Variable","Observations", "Mean", "Standard" "" "" \ "" "" "" " deviation") title(Table 2: Summary Statistics of NFS Villages) note(These statistics are based on our analysis of 255 villages from the National Fixed-Point Survey (NFS) from 2000-2011 in 19 provinces)   replace 
 
+* Realizamos la tabla con esttab
+
+estpost tabstat village_pop income_pc subsidy_rate poor_housing_rate poor_reg_rate disability_rate gov_officials high_gov_quality mid_gov_quality low_gov_quality ag_rate business_income_pc fiscal_rev_pc fiscal_exp_pc col_revenue_pc trained_labor_rate safe_water_rate computer_rate med_ins_rate enroll_rate, statistics(n mean sd) columns(statistics)
+
+esttab . using prueba.tex, replace cells("count mean sd ") nonumber collabels("Observations" "Mean" "Standard \\ deviation") title("summary stats") noobs label
+
+* prueba para ver si se puede poner standar (espacio) deviation
+
+esttab . using prueba.tex, replace cells("count mean sd ") nonumber collabels("Observations" "Mean" `"Standard"'5`"deviation"') title("summary stats") noobs label
+
+
+
+
+
+
+
+
+
+
+
+
 
 ****** 2 ******
 
 * omitimos low_gov_quality por el problema de multicolinealidad perfecta
 
-reg poor_housing_rate cgvo, robust 
 
 
