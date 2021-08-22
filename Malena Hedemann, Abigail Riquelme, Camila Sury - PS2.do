@@ -78,25 +78,53 @@ estpost tabstat village_pop income_pc subsidy_rate poor_housing_rate poor_reg_ra
 
 esttab . using prueba.tex, replace cells("count mean sd ") nonumber collabels("Observations" "Mean" "Standard \\ deviation") title("titulo") noobs label
 
-* prueba para ver si se puede poner standar (espacio) deviation
+* prueba para ver si se puede poner standard (espacio) deviation
 
 esttab . using prueba.tex, replace cells("count mean sd ") nonumber collabels("Observations" "Mean" `"Standard"'5`"deviation"') title("summary stats") noobs label
 
 
-
-
-
-
-
-
-
-
-
-
-
 ****** 2 ******
 
-* omitimos low_gov_quality por el problema de multicolinealidad perfecta
+*. For registered poor households, people with disabilities, subsidized population, and poor housing variables in levels run an OLS regression against “CGVO”. For each variable, run a simple regression and then a regression including precipitation and temperature as controls.
+
+
+* Regresiones
+
+* LIN - LIN 
+
+foreach v of varlist poor_housing_rate{
+	regress `v' cgvo, robust
+	outreg2 using regresion, tex replace 
+	regress `v' cgvo precipitation temperature, robust
+	outreg2 using regresion, tex append 
+}
+
+foreach v of varlist poor_reg_rate disability_rate subsidy_pop{
+	regress `v' cgvo, robust 
+	outreg2 using regresion, tex append
+    regress `v' cgvo precipitation temperature, robust
+	outreg2 using regresion, tex append 
+}
+
+
+* LOG - LIN: usamos las variables en logaritmos de la base de datos y creamos el logaritmo de la variable "subsidity_pop" dado que esta no se encuentra en la base de datos: 
+
+l_subsidy_pop
+
+foreach v of varlist l_poor_housing_rate{
+	regress `v' cgvo, robust
+	outreg2 using regresion, tex replace 
+	regress `v' cgvo precipitation temperature, robust
+	outreg2 using regresion, tex append 
+}
+
+foreach v of varlist l_poor_reg_rate l_disability_rate l_subsidy_pop{
+	regress `v' cgvo, robust 
+	outreg2 using regresion, tex append
+    regress `v' cgvo precipitation temperature, robust
+	outreg2 using regresion, tex append 
+}
+
 
 
 
