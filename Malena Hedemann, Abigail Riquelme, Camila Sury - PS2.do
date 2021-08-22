@@ -109,7 +109,7 @@ foreach v of varlist poor_reg_rate disability_rate subsidy_pop{
 
 * LOG - LIN: usamos las variables en logaritmos de la base de datos y creamos el logaritmo de la variable "subsidity_pop" dado que esta no se encuentra en la base de datos: 
 
-l_subsidy_pop
+gen l_subsidy_pop=log(subsidy_pop)
 
 foreach v of varlist l_poor_housing_rate{
 	regress `v' cgvo, robust
@@ -124,6 +124,19 @@ foreach v of varlist l_poor_reg_rate l_disability_rate l_subsidy_pop{
     regress `v' cgvo precipitation temperature, robust
 	outreg2 using regresion, tex append 
 }
+
+
+
+foreach v of varlist l_poor_housing_rate{
+	regress `v' cgvo, robust
+	outreg2 using regresion, tex replace 
+	regress `v' cgvo precipitation temperature, robust
+	outreg2 using regresion, tex append 
+}
+
+
+
+
 
 
 
